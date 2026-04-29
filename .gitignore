@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Terraform ###
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/terraform.tfvars
+terraform/.terraform.lock.hcl
+
+### Windows metadata ###
+*:Zone.Identifier
+
+### Environment ###
+.env
+.env.*
+!.env.example
