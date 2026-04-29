@@ -1,0 +1,4 @@
+mongodbatlas_public_key  = "your-public-key"
+mongodbatlas_private_key = "your-private-key"
+atlas_org_id             = "your-org-id"
+db_password              = "your-secure-password"

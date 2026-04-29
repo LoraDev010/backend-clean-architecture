@@ -2,7 +2,7 @@
 
 API REST reactiva para gestión de franquicias, sucursales y productos.
 
-**Stack:** Java 21 · Spring Boot 3.5 · WebFlux · MongoDB · Docker
+**Stack:** Java 21 · Spring Boot 3.5 · WebFlux · MongoDB Atlas · Docker · Terraform
 
 ---
 
@@ -91,6 +91,32 @@ Franchise
 
 ---
 
+## Infraestructura como código (Terraform + MongoDB Atlas)
+
+Provisiona un cluster MongoDB Atlas M0 (free tier) en AWS:
+
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+# Editar terraform.tfvars con tus API keys de Atlas
+terraform init
+terraform apply
+# El output connection_string es el valor de SPRING_DATA_MONGODB_URI
+```
+
+Obtener API keys: MongoDB Atlas → Organization → Access Manager → API Keys → Create API Key.
+
+---
+
+## Despliegue en Render.com
+
+1. Fork o conecta este repositorio en [render.com](https://render.com)
+2. Render detecta `render.yaml` y crea el servicio automáticamente
+3. Agrega la variable de entorno `SPRING_DATA_MONGODB_URI` con el connection string de Atlas
+4. Deploy automático en cada push a `main`
+
+---
+
 ## Git Flow
 
 ```
@@ -100,5 +126,6 @@ main  ← releases estables
     ├── feature/branch-crud
     ├── feature/product-crud
     ├── feature/top-stock-endpoint
-    └── feature/docker
+    ├── feature/docker
+    └── feature/terraform-iac
 ```
