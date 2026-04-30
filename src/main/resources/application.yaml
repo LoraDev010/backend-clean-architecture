@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sucursales
+    name: franchise-api
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/franchisedb}

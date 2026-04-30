@@ -8,8 +8,8 @@
 		<version>3.5.14</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.franquicias</groupId>
-	<artifactId>sucursales</artifactId>
+	<groupId>com.franchise</groupId>
+	<artifactId>franchise-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
