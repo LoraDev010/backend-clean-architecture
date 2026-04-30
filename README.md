@@ -16,7 +16,7 @@ API REST reactiva para gestión de franquicias, sucursales y productos.
 ## Levantar con Docker Compose
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 La API queda disponible en `http://localhost:8080`  
