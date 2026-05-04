@@ -4,6 +4,7 @@ import com.franchise.api.application.port.out.FranchiseRepositoryPort;
 import com.franchise.api.domain.model.Franchise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -11,6 +12,11 @@ import reactor.core.publisher.Mono;
 public class FranchiseRepositoryAdapter implements FranchiseRepositoryPort {
 
     private final FranchiseRepository repository;
+
+    @Override
+    public Flux<Franchise> findAll() {
+        return repository.findAll();
+    }
 
     @Override
     public Mono<Franchise> findById(String id) {

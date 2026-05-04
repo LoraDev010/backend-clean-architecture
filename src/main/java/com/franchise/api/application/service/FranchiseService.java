@@ -3,6 +3,7 @@ package com.franchise.api.application.service;
 import com.franchise.api.application.dto.request.AddBranchRequest;
 import com.franchise.api.application.dto.request.CreateFranchiseRequest;
 import com.franchise.api.application.dto.request.UpdateNameRequest;
+import com.franchise.api.application.dto.response.ProductResponse;
 import com.franchise.api.application.dto.response.TopStockResponse;
 import com.franchise.api.application.exception.FranchiseNotFoundException;
 import com.franchise.api.application.port.out.FranchiseRepositoryPort;
@@ -21,6 +22,10 @@ import java.util.UUID;
 public class FranchiseService {
 
     private final FranchiseRepositoryPort repository;
+
+    public Flux<Franchise> getAll() {
+        return repository.findAll();
+    }
 
     public Mono<Franchise> create(CreateFranchiseRequest request) {
         return repository.save(Franchise.builder()
@@ -57,6 +62,6 @@ public class FranchiseService {
                 .flatMapMany(franchise -> Flux.fromIterable(franchise.getBranches()))
                 .flatMap(branch -> Flux.fromIterable(branch.getProducts())
                         .reduce((a, b) -> a.getStock() >= b.getStock() ? a : b)
-                        .map(product -> new TopStockResponse(branch.getName(), product)));
+                        .map(product -> new TopStockResponse(branch.getName(), ProductResponse.from(product))));
     }
 }
