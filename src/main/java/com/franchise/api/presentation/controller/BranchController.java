@@ -3,7 +3,9 @@ package com.franchise.api.presentation.controller;
 import com.franchise.api.application.dto.request.AddProductRequest;
 import com.franchise.api.application.dto.request.UpdateNameRequest;
 import com.franchise.api.application.dto.response.FranchiseResponse;
-import com.franchise.api.application.service.BranchService;
+import com.franchise.api.application.usecase.AddProductToBranchUseCase;
+import com.franchise.api.application.usecase.DeleteProductUseCase;
+import com.franchise.api.application.usecase.UpdateBranchNameUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,14 +20,16 @@ import reactor.core.publisher.Mono;
 @Tag(name = "Branches")
 public class BranchController {
 
-    private final BranchService branchService;
+    private final AddProductToBranchUseCase addProductToBranch;
+    private final DeleteProductUseCase deleteProduct;
+    private final UpdateBranchNameUseCase updateBranchName;
 
     @PostMapping("/{branchId}/products")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Add a product to a branch")
     public Mono<FranchiseResponse> addProduct(@PathVariable String branchId,
                                               @Valid @RequestBody AddProductRequest request) {
-        return branchService.addProduct(branchId, request).map(FranchiseResponse::from);
+        return addProductToBranch.execute(branchId, request).map(FranchiseResponse::from);
     }
 
     @DeleteMapping("/{branchId}/products/{productId}")
@@ -33,13 +37,13 @@ public class BranchController {
     @Operation(summary = "Delete a product from a branch")
     public Mono<Void> deleteProduct(@PathVariable String branchId,
                                     @PathVariable String productId) {
-        return branchService.deleteProduct(branchId, productId);
+        return deleteProduct.execute(branchId, productId);
     }
 
     @PatchMapping("/{id}/name")
     @Operation(summary = "Update branch name")
     public Mono<FranchiseResponse> updateName(@PathVariable String id,
                                               @Valid @RequestBody UpdateNameRequest request) {
-        return branchService.updateName(id, request).map(FranchiseResponse::from);
+        return updateBranchName.execute(id, request).map(FranchiseResponse::from);
     }
 }
