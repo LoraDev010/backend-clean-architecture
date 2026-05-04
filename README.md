@@ -52,6 +52,7 @@ SPRING_DATA_MONGODB_URI=mongodb://host:27017/franchisedb ./mvnw spring-boot:run
 ### Franquicias
 | Método | Path | Descripción |
 |---|---|---|
+| `GET` | `/api/franchises` | Listar todas las franquicias |
 | `POST` | `/api/franchises` | Crear franquicia |
 | `POST` | `/api/franchises/{franchiseId}/branches` | Agregar sucursal |
 | `PATCH` | `/api/franchises/{id}/name` | Actualizar nombre |

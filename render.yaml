@@ -3,6 +3,7 @@ services:
     name: franchise-api
     runtime: docker
     plan: free
+    healthCheckPath: /actuator/health
     envVars:
       - key: SPRING_DATA_MONGODB_URI
         sync: false

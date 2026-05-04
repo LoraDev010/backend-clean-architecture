@@ -8,8 +8,8 @@
 		<version>3.5.14</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.franquicias</groupId>
-	<artifactId>sucursales</artifactId>
+	<groupId>com.franchise</groupId>
+	<artifactId>franchise-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
@@ -66,6 +66,12 @@
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
+			<version>4.14.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
