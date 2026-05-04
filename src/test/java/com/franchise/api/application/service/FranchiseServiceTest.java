@@ -101,8 +101,8 @@ class FranchiseServiceTest {
 
         StepVerifier.create(service.getTopStockPerBranch("1"))
                 .assertNext(r -> {
-                    assertThat(r.getBranchName()).isEqualTo("Norte");
-                    assertThat(r.getProduct().getStock()).isEqualTo(50);
+                    assertThat(r.branchName()).isEqualTo("Norte");
+                    assertThat(r.product().stock()).isEqualTo(50);
                 })
                 .verifyComplete();
     }
