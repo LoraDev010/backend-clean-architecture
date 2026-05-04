@@ -16,7 +16,7 @@ API REST reactiva para gestión de franquicias, sucursales y productos.
 ## Levantar con Docker Compose
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 La API queda disponible en `http://localhost:8080`  
@@ -52,6 +52,7 @@ SPRING_DATA_MONGODB_URI=mongodb://host:27017/franchisedb ./mvnw spring-boot:run
 ### Franquicias
 | Método | Path | Descripción |
 |---|---|---|
+| `GET` | `/api/franchises` | Listar todas las franquicias |
 | `POST` | `/api/franchises` | Crear franquicia |
 | `POST` | `/api/franchises/{franchiseId}/branches` | Agregar sucursal |
 | `PATCH` | `/api/franchises/{id}/name` | Actualizar nombre |
